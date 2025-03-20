@@ -3,6 +3,13 @@
 /node_modules
 /build
 
+# dev databases
+**/*.sqlite
+**/*.sql
+
+# ENV
+.env
+
 # Logs
 logs
 *.log
