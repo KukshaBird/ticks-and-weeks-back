@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  ParseUUIDPipe,
 } from '@nestjs/common';
 import { DishService } from './dish.service';
 import { CreateDishDto } from './dto/create-dish.dto';
@@ -26,17 +27,20 @@ export class DishController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.dishService.findOne(+id);
+  findOne(@Param('id', ParseUUIDPipe) id: string) {
+    return this.dishService.findOne(id);
   }
 
   @Patch(':id')
-  update(@Param('id') id: string, @Body() updateDishDto: UpdateDishDto) {
-    return this.dishService.update(+id, updateDishDto);
+  update(
+    @Param('id', ParseUUIDPipe) id: string,
+    @Body() updateDishDto: UpdateDishDto,
+  ) {
+    return this.dishService.update(id, updateDishDto);
   }
 
   @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.dishService.remove(+id);
+  remove(@Param('id', ParseUUIDPipe) id: string) {
+    return this.dishService.remove(id);
   }
 }
