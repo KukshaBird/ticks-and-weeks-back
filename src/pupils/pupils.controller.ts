@@ -11,6 +11,8 @@ import {
 import { PupilsService } from './pupils.service';
 import { CreatePupilDto } from './dto/create-pupil.dto';
 import { UpdatePupilDto } from './dto/update-pupil.dto';
+import { Serialize } from '../interceptors/serialize.interceptor';
+import { PupilDto } from './dto/pupil.dto';
 
 @Controller('pupils')
 export class PupilsController {
@@ -21,6 +23,7 @@ export class PupilsController {
     return this.pupilsService.create(createPupilDto);
   }
 
+  @Serialize(PupilDto)
   @Get()
   findAll() {
     return this.pupilsService.findAll();
