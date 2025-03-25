@@ -43,7 +43,12 @@ export class PupilsService {
       throw new NotFoundException('Pupil not found');
     }
 
-    Object.assign(pupil, updatePupilDto);
+    const updatedBalance = Object.assign(pupil.balance, updatePupilDto.balance);
+
+    Object.assign(pupil, {
+      ...updatePupilDto,
+      balance: updatedBalance,
+    });
 
     return this.pupilsRepository.save(pupil);
   }
