@@ -27,6 +27,6 @@ export class Pupil {
   @JoinColumn({ name: 'balance' })
   balance: Balance;
 
-  @OneToMany(() => Order, (order: Order) => order.pupil)
+  @OneToMany(() => Order, (order: Order) => order.pupil, { cascade: true })
   orders: Order[];
 }
