@@ -14,6 +14,7 @@ export class Order {
 
   @ManyToOne(() => Pupil, (pupil: Pupil) => pupil.orders, {
     onDelete: 'CASCADE',
+    orphanedRowAction: 'delete',
   })
   pupil: Pupil;
 }
