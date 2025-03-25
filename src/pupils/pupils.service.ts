@@ -58,6 +58,12 @@ export class PupilsService {
     if (!pupil) {
       throw new NotFoundException('Pupil not found');
     }
+    await this.balanceRepository.remove(pupil.balance);
     return await this.pupilsRepository.remove(pupil);
+  }
+
+  async purge() {
+    await this.pupilsRepository.clear();
+    await this.balanceRepository.clear();
   }
 }

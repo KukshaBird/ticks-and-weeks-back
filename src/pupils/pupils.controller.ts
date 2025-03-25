@@ -6,6 +6,7 @@ import {
   Patch,
   Param,
   Delete,
+  HttpCode,
   ParseUUIDPipe,
 } from '@nestjs/common';
 import { PupilsService } from './pupils.service';
@@ -42,5 +43,11 @@ export class PupilsController {
   @Delete(':id')
   remove(@Param('id', ParseUUIDPipe) id: string) {
     return this.pupilsService.remove(id);
+  }
+
+  @HttpCode(200)
+  @Post('purge')
+  purgePupils() {
+    return this.pupilsService.purge();
   }
 }
