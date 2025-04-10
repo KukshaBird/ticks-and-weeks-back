@@ -26,7 +26,10 @@ export class PupilsService {
   }
 
   async findAll() {
-    return await this.pupilsRepository.find({ relations: ['orders'] });
+    return await this.pupilsRepository.find({
+      relations: ['orders'],
+      order: { name: 'ASC' },
+    });
   }
 
   async findOne(id: string) {
