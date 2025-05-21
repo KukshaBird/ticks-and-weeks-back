@@ -1,0 +1,14 @@
+# NOT for production usage.
+services:
+  server:
+    container_name: back-dev
+    build:
+      context: .
+    environment:
+      NODE_ENV: development
+    env_file:
+      - .env
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./data:/home/node/app/data
