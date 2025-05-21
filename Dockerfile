@@ -22,6 +22,9 @@ USER node
 # Use default node dir in node image
 WORKDIR /home/node/app
 
+# Create dir for data that use when create database
+RUN mkdir data
+
 COPY --from=builder --chown=node:node /tmp/dist .
 COPY --from=builder --chown=node:node /tmp/package*.json .
 

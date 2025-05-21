@@ -13,7 +13,7 @@ import { OrdersModule } from './orders/orders.module';
     DishModule,
     TypeOrmModule.forRoot({
       type: 'sqlite',
-      database: 'db.sqlite',
+      database: 'data/db.sqlite',
       entities: [Dish, Pupil, Balance, Order],
       synchronize: true,
     }),
