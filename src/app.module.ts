@@ -12,10 +12,14 @@ import { OrdersModule } from './orders/orders.module';
   imports: [
     DishModule,
     TypeOrmModule.forRoot({
-      type: 'sqlite',
-      database: 'data/db.sqlite',
-      entities: [Dish, Pupil, Balance, Order],
+      type: 'postgres',
+      host: 'postgres-dev',
+      database: process.env.DATABASE_NAME || '',
+      username: process.env.DATABASE_USER || '',
+      password: process.env.DATABASE_PASSWORD || '',
+      port: 5432,
       synchronize: true,
+      entities: [Dish, Pupil, Balance, Order],
     }),
     PupilsModule,
     OrdersModule,
