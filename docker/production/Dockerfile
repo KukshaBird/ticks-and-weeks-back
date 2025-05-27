@@ -29,7 +29,7 @@ COPY --from=builder --chown=node:node /tmp/dist .
 COPY --from=builder --chown=node:node /tmp/package*.json .
 
 RUN --mount=type=cache,target=/root/.npm \
-    npm ci --omit=dev
+    npm ci --omit=development
 
 RUN npm cache clean --force
 
